@@ -93,43 +93,74 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:30px;
-  margin:25px 0 15px;
+  gap:40px;
+  margin:35px 0 20px;
 }
 
 .control-btn{
+  width:45px;
+  height:45px;
+  border:none;
+  background:none;
   cursor:pointer;
-  font-size:24px;
-  opacity:.8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:.7;
   transition:.2s ease;
+}
+
+.control-btn svg{
+  width:24px;
+  height:24px;
+  fill:white;
 }
 
 .control-btn:hover{
   opacity:1;
-  transform:scale(1.1);
+  transform:scale(1.15);
 }
 
-.play{
-  width:65px;
-  height:65px;
+/* Play Button */
+.play-btn{
+  width:78px;
+  height:78px;
   border-radius:50%;
-  background:var(--accent);
+  background:#1db954;
+  border:none;
+  cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 30px rgba(29,185,84,.4);
+  transition:.2s ease;
+  box-shadow:0 15px 40px rgba(29,185,84,.4);
 }
 
-.amplitude-play-pause.amplitude-paused::after{
-  content:"▶";
-  color:#000;
-  font-size:22px;
+.play-btn:hover{
+  transform:scale(1.08);
 }
 
-.amplitude-play-pause.amplitude-playing::after{
-  content:"❚❚";
-  color:#000;
-  font-size:20px;
+/* Play triangle */
+.amplitude-play-pause.amplitude-paused::before{
+  content:"";
+  width:0;
+  height:0;
+  border-left:20px solid black;
+  border-top:13px solid transparent;
+  border-bottom:13px solid transparent;
+  margin-left:6px;
+}
+
+/* Pause bars */
+.amplitude-play-pause.amplitude-playing::before{
+  content:"";
+  width:20px;
+  height:20px;
+  background:
+    linear-gradient(to right,
+      black 0 7px,
+      transparent 7px 12px,
+      black 12px 19px);
 }
 
 /* Progress */

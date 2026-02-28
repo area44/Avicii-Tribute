@@ -46,9 +46,19 @@
   <canvas id="visualizer"></canvas>
 
   <div class="controls">
-    <div class="amplitude-prev control-btn">⏮</div>
-    <div class="amplitude-play-pause amplitude-paused control-btn play"></div>
-    <div class="amplitude-next control-btn">⏭</div>
+    <button class="amplitude-prev control-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 6h2v12H6zM9 12l9 6V6z"/>
+      </svg>
+    </button>
+
+    <button class="amplitude-play-pause play-btn amplitude-paused"></button>
+
+    <button class="amplitude-next control-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M16 6h2v12h-2zM6 6l9 6-9 6z"/>
+      </svg>
+    </button>
   </div>
 
   <div class="progress">
