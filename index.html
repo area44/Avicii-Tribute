@@ -1,371 +1,164 @@
-
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Avicii Tribute</title>
+  <title>Avicii Tribute | Honoring Tim Bergling</title>
   <meta name="author" content="AREA44">
-  <meta name="description" content="Tim created music that brought people together with timeless memories from all over the world.">
-  
-  <!-- Facebook Open Graph-->
-	<meta property="og:url" content="https://aviciitribute.netlify.app/">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Avicii Tribute">
-	<meta property="og:image" content="https://raw.githubusercontent.com/AREA44/Avicii-Tribute/main/Tim.jpg">
-	<meta property="og:description" content="Tim created music that brought people together with timeless memories from all over the world.">
-	<meta property="og:locale" content="en_US">
-	<meta property="article:author" content="AREA44">
+  <meta name="description" content="A tribute to Avicii (Tim Bergling). Celebrating the music that united millions around the world.">
+  <meta name="keywords" content="Avicii, Tim Bergling, EDM, tribute, electronic music, DJ, producer">
+  <meta name="theme-color" content="#ffffff">
 
-	<!-- Twitter Card-->
-	<meta name="twitter:url" content="https://aviciitribute.netlify.app/">
-	<meta name="twitter:title" content="Avicii Tribute">
-	<meta name="twitter:description" content="Tim created music that brought people together with timeless memories from all over the world.">
-	<meta name="twitter:image" content="https://raw.githubusercontent.com/AREA44/Avicii-Tribute/main/Tim.jpg">
-  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://area44.github.io/Avicii-Tribute">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://area44.github.io/Avicii-Tribute">
+  <meta property="og:title" content="Avicii Tribute | Honoring Tim Bergling">
+  <meta property="og:description" content="Celebrating the life and music of Avicii, whose songs brought people together worldwide.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/AREA44/Avicii-Tribute/main/Tim.jpg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Avicii Tribute | Honoring Tim Bergling">
+  <meta name="twitter:description" content="Celebrating the life and music of Avicii.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/AREA44/Avicii-Tribute/main/Tim.jpg">
+
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+  <!-- Fonts Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="./style.css">
 
+  <!-- Structured Data (SEO Boost) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Avicii",
+    "alternateName": "Tim Bergling",
+    "genre": "Electronic Dance Music",
+    "url": "https://area44.github.io/Avicii-Tribute",
+    "sameAs": [
+      "https://en.wikipedia.org/wiki/Avicii",
+      "https://www.instagram.com/avicii/",
+      "https://twitter.com/avicii"
+    ]
+  }
+  </script>
 </head>
+
 <body>
-    <div class="container">
-        <div id="white-player">
-          <div class="white-player-top">
-            <div>
-              &nbsp;
-            </div>
-            
-            <div class="center">
-              <span class="now-playing">Now Playing</span>
-            </div>
-            
-            <div>
-                <img src="./static/media/show-playlist.svg" class="show-playlist"/>
-            </div>
+  <main class="container">
+    <section id="white-player" aria-label="Music Player">
+
+      <!-- Player Header -->
+      <header class="white-player-top">
+        <div></div>
+
+        <div class="center">
+          <span class="now-playing">Now Playing</span>
+        </div>
+
+        <div>
+          <button aria-label="Show Playlist" class="playlist-toggle">
+            <img src="./static/media/show-playlist.svg" alt="Show Playlist">
+          </button>
+        </div>
+      </header>
+
+      <!-- Player Center -->
+      <section id="white-player-center">
+        <img 
+          data-amplitude-song-info="cover_art_url"
+          class="main-album-art"
+          alt="Album Cover"
+        >
+
+        <div class="song-meta-data">
+          <h1 data-amplitude-song-info="name" class="song-name"></h1>
+          <p data-amplitude-song-info="artist" class="song-artist"></p>
+        </div>
+
+        <!-- Progress -->
+        <div class="time-progress">
+          <div id="progress-container">
+            <input 
+              type="range"
+              class="amplitude-song-slider"
+              aria-label="Song progress"
+            >
+            <progress class="amplitude-song-played-progress"></progress>
+            <progress class="amplitude-buffered-progress" value="0"></progress>
           </div>
 
-          <div id="white-player-center">
-            <img data-amplitude-song-info="cover_art_url" class="main-album-art"/>
-
-            <div class="song-meta-data">
-              <span data-amplitude-song-info="name" class="song-name"></span>
-              <span data-amplitude-song-info="artist" class="song-artist"></span>
-            </div>
-
-            <div class="time-progress">
-              <div id="progress-container">
-                <input type="range" class="amplitude-song-slider"/>
-                <progress id="song-played-progress" class="amplitude-song-played-progress"></progress>
-                <progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>
-              </div>
-
-              <div class="time-container">
-                <span class="current-time">
-                  <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
-                </span>
-                <span class="duration">
-                    <span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-
-          <div id="white-player-controls">
-            <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
-            <div class="amplitude-prev" id="previous"></div>
-            <div class="amplitude-play-pause" id="play-pause"></div>
-            <div class="amplitude-next" id="next"></div>
-            <div class="amplitude-repeat" id="repeat"></div>
-          </div>
-
-          <div id="white-player-playlist-container">
-            <div class="white-player-playlist-top">
-              <div>
-
-              </div>
-              <div>
-                <span class="queue">Queue</span>
-              </div>
-              <div>
-                  <img src="./static/media/close.svg" class="close-playlist"/>
-              </div>
-             </div>
-
-            <div class="white-player-up-next">
-              Up Next
-            </div>
-
-            <div class="white-player-playlist">
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="0">
-                <img src="./music/cover/Black & Blue.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Black & Blue</span>
-                  <span class="playlist-artist-album">Avicii feat. Aloe Blacc, Mac Davis</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="1">
-                <img src="./music/cover/Bright Lights (Version 1).jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Bright Lights (Version 1)</span>
-                  <span class="playlist-artist-album">Avicii, Syn Cole</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="2">
-                <img src="./music/cover/Bright Lights (Version 2).jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Bright Lights (Version 2)</span>
-                  <span class="playlist-artist-album">Avicii, Syn Cole</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="3">
-                <img src="./music/cover/Broken Heart & Hennessy.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Broken Heart & Hennessy</span>
-                  <span class="playlist-artist-album">Avicii feat. Mike Posner</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="4">
-                <img src="./music/cover/Can't Get Enough.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Can't Get Enough</span>
-                  <span class="playlist-artist-album">Avicii, Cazzette feat. The High</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="5">
-                <img src="./music/cover/Can't Love You Again.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Can't Love You Again</span>
-                  <span class="playlist-artist-album">Avicii, Tom Odell</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="6">
-                <img src="./music/cover/Chained.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Chained</span>
-                  <span class="playlist-artist-album">Avicii, AlexST</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="7">
-                <img src="./music/cover/Enough is Enough.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Enough is Enough</span>
-                  <span class="playlist-artist-album">Avicii</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="8">
-                <img src="./music/cover/Faster Than Light.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Faster Than Light</span>
-                  <span class="playlist-artist-album">Avicii feat. Sandro Cavazza</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="9">
-                <img src="./music/cover/Finally.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Finally</span>
-                  <span class="playlist-artist-album">Avicii, Kings Of Tomorrow Kings Of Tomorrow feat. Julie McKnight</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="10">
-                <img src="./music/cover/Heaven.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Heaven</span>
-                  <span class="playlist-artist-album">Avicii feat. Simon Aldred</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="11">
-                <img src="./music/cover/How Many Lovers.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">How Many Lovers</span>
-                  <span class="playlist-artist-album">Avicii, Pacif0c, Alex Ebert</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="12">
-                <img src="./music/cover/I'll be Gone.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">I'll be Gone</span>
-                  <span class="playlist-artist-album">Avicii feat. Joakim Berg</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="13">
-                <img src="./music/cover/Unbreakable.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Unbreakable</span>
-                  <span class="playlist-artist-album">Avicii, BUNT feat. Sandro Cavazza & Clarece Coffee Jr</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="14">
-                <img src="./music/cover/Live Your Life.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Live Your Life</span>
-                  <span class="playlist-artist-album">Avicii, Afrojack, David Guetta, Ne-Yo</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="15">
-                <img src="./music/cover/Lord.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Lord</span>
-                  <span class="playlist-artist-album">Avicii, Sandro Cavazza</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="16">
-                <img src="./music/cover/Make Your Move.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Make Your Move</span>
-                  <span class="playlist-artist-album">Avicii, Redroche, Dave Armstrong</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="17">
-                <img src="./music/cover/No Pleasing A Woman.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">No Pleasing A Woman</span>
-                  <span class="playlist-artist-album">Avicii</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="18">
-                <img src="./music/cover/Our Love.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Our Love</span>
-                  <span class="playlist-artist-album">Avicii feat. Sandro Cavazza</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="19">
-                <img src="./music/cover/Revolver.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Revolver</span>
-                  <span class="playlist-artist-album">Avicii, Philter</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="20">
-                <img src="./music/cover/Rock Me.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Rock Me</span>
-                  <span class="playlist-artist-album">Avicii</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="21">
-                <img src="./music/cover/Silence.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Silence</span>
-                  <span class="playlist-artist-album">Avicii, Mike Posner</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="22">
-                <img src="./music/cover/Someone New.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Someone New</span>
-                  <span class="playlist-artist-album">Avicii, Triangle</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="23">
-                <img src="./music/cover/Somethings Got A Hold On Me vs Levels.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Somethings Got A Hold On Me vs Levels</span>
-                  <span class="playlist-artist-album">Avicii, Skrillex, Etta James</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="24">
-                <img src="./music/cover/Stepping Stone.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Stepping Stone</span>
-                  <span class="playlist-artist-album">Avicii, AlexST</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="25">
-                <img src="./music/cover/Street Player.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Street Player</span>
-                  <span class="playlist-artist-album">Avicii, Chicago</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="26">
-                <img src="./music/cover/Sunshine vs Spectrum.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Sunshine vs Spectrum</span>
-                  <span class="playlist-artist-album">Avicii & David Guetta vs. Florence & Machine</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="27">
-                <img src="./music/cover/Take Me In Your Arms.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">Take Me In Your Arms</span>
-                  <span class="playlist-artist-album">Avicii, The Isley Brothers</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="28">
-                <img src="./music/cover/T-Bone.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">T-Bone</span>
-                  <span class="playlist-artist-album">Avicii</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="29">
-                <img src="./music/cover/The Other Side.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">The Other Side</span>
-                  <span class="playlist-artist-album">Avicii feat. Cam</span>
-                </div>
-              </div>
-
-              <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="30">
-                <img src="./music/cover/UMF 2013.jpg"/>
-                <div class="playlist-song-meta">
-                  <span class="playlist-song-name">UMF 2013</span>
-                  <span class="playlist-artist-album">Avicii</span>
-                </div>
-              </div>
-
-          </div>
-          <div class="white-player-playlist-controls">
-            <img data-amplitude-song-info="cover_art_url" class="playlist-album-art"/>
-
-            <div class="playlist-controls">
-              <div class="playlist-meta-data">
-                  <span data-amplitude-song-info="name" class="song-name"></span>
-                  <span data-amplitude-song-info="artist" class="song-artist"></span>
-              </div>
-
-              <div class="playlist-control-wrapper">
-                <div class="amplitude-prev" id="playlist-previous"></div>
-                <div class="amplitude-play-pause" id="playlist-play-pause"></div>
-                <div class="amplitude-next" id="playlist-next"></div>
-              </div>
-            </div>
+          <div class="time-container">
+            <span class="current-time">
+              <span class="amplitude-current-minutes"></span>:
+              <span class="amplitude-current-seconds"></span>
+            </span>
+            <span class="duration">
+              <span class="amplitude-duration-minutes"></span>:
+              <span class="amplitude-duration-seconds"></span>
+            </span>
           </div>
         </div>
-      </div>
-  <script src='./static/javascript/amplitude.min.js'>
-  </script><script  src="./script.js"></script>
+      </section>
 
+      <!-- Player Controls -->
+      <nav id="white-player-controls" aria-label="Player Controls">
+        <button class="amplitude-shuffle amplitude-shuffle-off" aria-label="Shuffle"></button>
+        <button class="amplitude-prev" aria-label="Previous"></button>
+        <button class="amplitude-play-pause" aria-label="Play / Pause"></button>
+        <button class="amplitude-next" aria-label="Next"></button>
+        <button class="amplitude-repeat" aria-label="Repeat"></button>
+      </nav>
+
+      <!-- Playlist -->
+      <section id="white-player-playlist-container" aria-label="Playlist">
+
+        <header class="white-player-playlist-top">
+          <div></div>
+          <div><span class="queue">Queue</span></div>
+          <div>
+            <button aria-label="Close Playlist">
+              <img src="./static/media/close.svg" alt="Close Playlist">
+            </button>
+          </div>
+        </header>
+
+        <div class="white-player-up-next">
+          Up Next
+        </div>
+
+        <div class="white-player-playlist">
+          <!-- Example Playlist Item (Repeat Pattern for All Songs) -->
+          <div class="white-player-playlist-song amplitude-song-container amplitude-play-pause"
+               data-amplitude-song-index="0">
+            <img src="./music/cover/Black & Blue.jpg" alt="Black & Blue Cover">
+            <div class="playlist-song-meta">
+              <span class="playlist-song-name">Black & Blue</span>
+              <span class="playlist-artist-album">Avicii feat. Aloe Blacc, Mac Davis</span>
+            </div>
+          </div>
+
+          <!-- Keep remaining playlist items here -->
+        </div>
+
+      </section>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="./static/javascript/amplitude.min.js" defer></script>
+  <script src="./script.js" defer></script>
 </body>
 </html>
