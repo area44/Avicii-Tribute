@@ -32,16 +32,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ["Sunshine vs Spectrum", "Avicii & David Guetta vs. Florence & Machine"],
     ["Take Me In Your Arms", "Avicii, The Isley Brothers"],
     ["T-Bone", "Avicii"],
-    ["The Other Side", "Avicii feat. Cam"],
-    ["UMF 2013", "Avicii"]
+
+    // custom extensions here
+    ["The Other Side", "Avicii feat. Cam", "wav"],
+    ["UMF 2013", "Avicii", "flac"]
   ];
 
-  const songs = songsRaw.map(([name,artist]) => ({
+  const songs = songsRaw.map(([name, artist, ext = "mp3"]) => ({
     name,
     artist,
-    album:"Single",
-    url:`${base}/track/${name}.mp3`,
-    cover_art_url:`${base}/cover/${name}.jpg`
+    album: "Single",
+    url: `${base}/track/${name}.${ext}`,
+    cover_art_url: `${base}/cover/${name}.jpg`
   }));
 
   Amplitude.init({ songs });
